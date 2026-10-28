@@ -1,0 +1,711 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Zambia Old Coins Market</title>
+
+<meta name="description" content="A marketplace for collectors and sellers of old Zambian coins. Submit your coin details for review and a possible purchase offer.">
+
+<style>
+:root {
+  --green: #176b3a;
+  --dark: #103b26;
+  --gold: #d9a62e;
+  --cream: #fffaf0;
+  --white: #ffffff;
+  --text: #25332b;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  background: var(--cream);
+  color: var(--text);
+  line-height: 1.6;
+}
+
+header {
+  background: var(--dark);
+  color: white;
+  padding: 18px 5%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.brand {
+  font-size: 21px;
+  font-weight: bold;
+}
+
+.brand span {
+  color: var(--gold);
+}
+
+nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+}
+
+nav a {
+  color: white;
+  text-decoration: none;
+  font-size: 14px;
+}
+
+nav a:hover {
+  color: var(--gold);
+}
+
+.hero {
+  background: linear-gradient(135deg, #103b26, #176b3a);
+  color: white;
+  padding: 65px 6%;
+  text-align: center;
+}
+
+.hero h1 {
+  font-size: clamp(30px, 5vw, 48px);
+  margin: 0 0 15px;
+}
+
+.hero p {
+  max-width: 650px;
+  margin: 0 auto 25px;
+  color: #e4eee6;
+}
+
+.button {
+  display: inline-block;
+  background: var(--gold);
+  color: #18291d;
+  text-decoration: none;
+  padding: 13px 22px;
+  border-radius: 7px;
+  border: none;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.button:hover {
+  opacity: 0.9;
+}
+
+section {
+  padding: 42px 6%;
+}
+
+.section-title {
+  text-align: center;
+  margin-bottom: 25px;
+}
+
+.section-title h2 {
+  color: var(--dark);
+  margin-bottom: 5px;
+}
+
+.section-title p {
+  color: #647067;
+}
+
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 20px;
+  max-width: 1100px;
+  margin: auto;
+}
+
+.coin-card {
+  background: white;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 15px #00000012;
+}
+
+.coin-card img {
+  width: 100%;
+  height: 210px;
+  object-fit: cover;
+  display: block;
+  background: #e8e2d3;
+}
+
+.coin-card div {
+  padding: 15px;
+}
+
+.coin-card h3 {
+  margin: 0 0 8px;
+  color: var(--dark);
+}
+
+.note {
+  font-size: 13px;
+  color: #66736a;
+}
+
+.form-section {
+  background: #edf3ec;
+}
+
+.form-box {
+  max-width: 750px;
+  margin: auto;
+  background: white;
+  padding: 25px;
+  border-radius: 12px;
+  box-shadow: 0 4px 18px #0000000d;
+}
+
+label {
+  display: block;
+  margin-top: 16px;
+  margin-bottom: 6px;
+  font-weight: bold;
+}
+
+input,
+select,
+textarea {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #cbd5cc;
+  border-radius: 7px;
+  font-size: 16px;
+  background: white;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+  outline: 2px solid #8dc19c;
+  border-color: var(--green);
+}
+
+textarea {
+  resize: vertical;
+  min-height: 90px;
+}
+
+.checkbox-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  margin: 18px 0;
+}
+
+.checkbox-row input {
+  width: auto;
+  margin-top: 5px;
+}
+
+.checkbox-row label {
+  margin: 0;
+  font-weight: normal;
+}
+
+.submit-button {
+  width: 100%;
+  margin-top: 18px;
+  background: var(--green);
+  color: white;
+  padding: 15px;
+  border: none;
+  border-radius: 7px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.submit-button:hover {
+  background: var(--dark);
+}
+
+.info-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 18px;
+  max-width: 1000px;
+  margin: auto;
+}
+
+.info-card {
+  background: white;
+  padding: 22px;
+  border-radius: 10px;
+  box-shadow: 0 3px 12px #0000000b;
+}
+
+.info-card h3 {
+  color: var(--green);
+}
+
+.contact {
+  background: var(--dark);
+  color: white;
+  text-align: center;
+}
+
+.contact h2 {
+  color: var(--gold);
+}
+
+.contact a {
+  color: white;
+  overflow-wrap: anywhere;
+}
+
+.contact .button {
+  color: #18291d;
+  margin: 8px;
+}
+
+footer {
+  background: #09291a;
+  color: #d7e3da;
+  text-align: center;
+  padding: 20px;
+  font-size: 13px;
+}
+
+@media (max-width: 500px) {
+  header {
+    justify-content: center;
+  }
+
+  nav {
+    justify-content: center;
+  }
+
+  .hero {
+    padding: 45px 5%;
+  }
+
+  section {
+    padding: 32px 5%;
+  }
+
+  .form-box {
+    padding: 18px;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <div class="brand">🪙 Zambia <span>Old Coins</span></div>
+
+  <nav>
+    <a href="#home">Home</a>
+    <a href="#gallery">Coin Gallery</a>
+    <a href="#sell">Sell Your Coins</a>
+    <a href="#contact">Contact</a>
+  </nav>
+</header>
+
+<main>
+
+<section class="hero" id="home">
+  <h1>Discover the Value of Old Zambian Coins</h1>
+
+  <p>
+    Do you own old Zambian coins? Submit your coin details and photographs
+    for review. We welcome enquiries from collectors and potential sellers.
+  </p>
+
+  <a href="#sell" class="button">Submit Your Coins</a>
+</section>
+
+<section id="gallery">
+  <div class="section-title">
+    <h2>Explore Zambian Coins</h2>
+    <p>Examples of coins that collectors may wish to identify and evaluate.</p>
+  </div>
+
+  <div class="gallery">
+
+    <article class="coin-card">
+      <img
+        src="https://commons.wikimedia.org/wiki/Special:FilePath/Zambia%201%20ngwee%201963.jpg"
+        alt="Example of an old Zambian coin"
+        loading="lazy"
+        onerror="this.onerror=null;this.src='https://placehold.co/500x300/e8e2d3/333333?text=Zambian+Coin';"
+      >
+      <div>
+        <h3>Historic Zambian Coins</h3>
+        <p>Submit older coins for identification and review.</p>
+      </div>
+    </article>
+
+    <article class="coin-card">
+      <img
+        src="https://commons.wikimedia.org/wiki/Special:FilePath/Zambia%205%20ngwee%201963.jpg"
+        alt="Example of a Zambian ngwee coin"
+        loading="lazy"
+        onerror="this.onerror=null;this.src='https://placehold.co/500x300/e8e2d3/333333?text=Ngwee+Coin';"
+      >
+      <div>
+        <h3>Ngwee Coins</h3>
+        <p>Tell us the denomination and year shown on your coin.</p>
+      </div>
+    </article>
+
+    <article class="coin-card">
+      <img
+        src="https://commons.wikimedia.org/wiki/Special:FilePath/Zambia%201%20kwacha%201973.jpg"
+        alt="Example of a Zambian kwacha coin"
+        loading="lazy"
+        onerror="this.onerror=null;this.src='https://placehold.co/500x300/e8e2d3/333333?text=Kwacha+Coin';"
+      >
+      <div>
+        <h3>Kwacha Coins</h3>
+        <p>We welcome enquiries about older kwacha coins.</p>
+      </div>
+    </article>
+
+  </div>
+
+  <p class="note" style="text-align:center;margin-top:20px">
+    Images are illustrative examples. The actual coin, date, authenticity,
+    rarity and condition must be checked before making an offer.
+  </p>
+</section>
+
+<section class="form-section" id="sell">
+  <div class="section-title">
+    <h2>Submit Your Old Coins</h2>
+    <p>Complete the form to prepare an enquiry about selling your coins.</p>
+  </div>
+
+  <div class="form-box">
+
+    <form id="coinForm">
+
+      <label for="sellerName">Your full name *</label>
+      <input
+        type="text"
+        id="sellerName"
+        name="sellerName"
+        required
+        maxlength="100"
+        autocomplete="name"
+        placeholder="Enter your name"
+      >
+
+      <label for="sellerEmail">Your email address *</label>
+      <input
+        type="email"
+        id="sellerEmail"
+        name="sellerEmail"
+        required
+        maxlength="150"
+        autocomplete="email"
+        placeholder="you@example.com"
+      >
+
+      <label for="sellerPhone">Your WhatsApp or phone number *</label>
+      <input
+        type="tel"
+        id="sellerPhone"
+        name="sellerPhone"
+        required
+        maxlength="30"
+        autocomplete="tel"
+        placeholder="Include your country code"
+      >
+
+      <label for="country">Your country *</label>
+      <input
+        type="text"
+        id="country"
+        name="country"
+        required
+        maxlength="80"
+        placeholder="e.g. Zambia"
+      >
+
+      <label for="denomination">Coin denomination *</label>
+      <select id="denomination" name="denomination" required>
+        <option value="">Select denomination</option>
+        <option>1 Ngwee</option>
+        <option>2 Ngwee</option>
+        <option>5 Ngwee</option>
+        <option>10 Ngwee</option>
+        <option>20 Ngwee</option>
+        <option>50 Ngwee</option>
+        <option>1 Kwacha</option>
+        <option>2 Kwacha</option>
+        <option>5 Kwacha</option>
+        <option>Other / Unknown</option>
+      </select>
+
+      <label for="coinYear">Year on the coin *</label>
+      <input
+        type="text"
+        id="coinYear"
+        name="coinYear"
+        required
+        maxlength="30"
+        placeholder="e.g. 1964 or Unknown"
+      >
+
+      <label for="quantity">Number of coins *</label>
+      <input
+        type="number"
+        id="quantity"
+        name="quantity"
+        required
+        min="1"
+        max="100000"
+        value="1"
+      >
+
+      <label for="condition">Coin condition *</label>
+      <select id="condition" name="condition" required>
+        <option value="">Select condition</option>
+        <option>Uncirculated</option>
+        <option>Very good</option>
+        <option>Good</option>
+        <option>Fair / Worn</option>
+        <option>Damaged</option>
+        <option>Not sure</option>
+      </select>
+
+      <label for="askingPrice">Your asking price and currency *</label>
+      <input
+        type="text"
+        id="askingPrice"
+        name="askingPrice"
+        required
+        maxlength="80"
+        placeholder="e.g. ZMW 200 or USD 10"
+      >
+
+      <label for="coinPhoto">Coin photographs</label>
+      <input
+        type="file"
+        id="coinPhoto"
+        name="coinPhoto"
+        accept="image/jpeg,image/png,image/webp"
+        multiple
+      >
+      <p class="note">
+        You can select up to 4 photos. Each photo must be 5 MB or smaller.
+        Photos will be attached to an email if your email app supports it;
+        otherwise, you can attach them yourself.
+      </p>
+
+      <label for="description">Additional coin details</label>
+      <textarea
+        id="description"
+        name="description"
+        maxlength="1500"
+        placeholder="Describe any markings, unusual features or other details."
+      ></textarea>
+
+      <div class="checkbox-row">
+        <input type="checkbox" id="consent" required>
+        <label for="consent">
+          I agree to share the information above with Zambia Old Coins Market
+          so my enquiry can be reviewed. I understand that submitting this
+          form does not guarantee a purchase or a specific price.
+        </label>
+      </div>
+
+      <button type="submit" class="submit-button">
+        Prepare Coin Submission
+      </button>
+
+      <p class="note">
+        This is a static website form. It prepares an email enquiry but does
+        not automatically store submissions or upload photographs to a server.
+      </p>
+
+    </form>
+
+    <div id="result" role="status" aria-live="polite"></div>
+
+  </div>
+</section>
+
+<section id="how">
+  <div class="section-title">
+    <h2>How It Works</h2>
+    <p>A simple process for submitting a coin for consideration.</p>
+  </div>
+
+  <div class="info-grid">
+
+    <div class="info-card">
+      <h3>1. Submit</h3>
+      <p>Provide the coin's year, denomination, condition and asking price.</p>
+    </div>
+
+    <div class="info-card">
+      <h3>2. Review</h3>
+      <p>Your enquiry can be reviewed to determine whether the coin is of interest.</p>
+    </div>
+
+    <div class="info-card">
+      <h3>3. Discuss</h3>
+      <p>Discuss the coin, its authenticity, price and delivery arrangements before agreeing to a sale.</p>
+    </div>
+
+  </div>
+</section>
+
+<section class="contact" id="contact">
+  <h2>Contact Us</h2>
+  <p>Questions about selling old Zambian coins? Contact us below.</p>
+
+  <p>
+    <strong>WhatsApp:</strong><br>
+    <a href="https://wa.me/254727686679" target="_blank" rel="noopener">
+      +254727686679
+    </a>
+  </p>
+
+  <p>
+    <strong>Email:</strong><br>
+    <a href="mailto:james62@idf.ovh">james62@idf.ovh</a>
+  </p>
+
+  <a
+    class="button"
+    href="https://wa.me/254727686679?text=Hello%2C%20I%20am%20interested%20in%20selling%20old%20Zambian%20coins."
+    target="_blank"
+    rel="noopener"
+  >
+    Chat on WhatsApp
+  </a>
+
+  <a
+    class="button"
+    href="mailto:james62@idf.ovh?subject=Old%20Zambian%20Coins%20Enquiry"
+  >
+    Email Us
+  </a>
+</section>
+
+</main>
+
+<footer>
+  <p>© <span id="year"></span> Zambia Old Coins Market.</p>
+  <p>Coin valuations are subject to inspection and verification.</p>
+</footer>
+
+<script>
+document.getElementById("year").textContent = new Date().getFullYear();
+
+const form = document.getElementById("coinForm");
+const result = document.getElementById("result");
+
+form.addEventListener("submit", function(event) {
+  event.preventDefault();
+
+  if (!form.reportValidity()) {
+    return;
+  }
+
+  const photoInput = document.getElementById("coinPhoto");
+  const photos = Array.from(photoInput.files);
+
+  if (photos.length > 4) {
+    alert("Please select no more than 4 photographs.");
+    return;
+  }
+
+  for (const photo of photos) {
+    if (photo.size > 5 * 1024 * 1024) {
+      alert("Each photograph must be 5 MB or smaller.");
+      return;
+    }
+
+    if (!["image/jpeg", "image/png", "image/webp"].includes(photo.type)) {
+      alert("Please select JPG, PNG or WebP image files.");
+      return;
+    }
+  }
+
+  const data = new FormData(form);
+
+  const message = [
+    "OLD ZAMBIAN COINS - SELLER ENQUIRY",
+    "",
+    "Seller name: " + data.get("sellerName"),
+    "Seller email: " + data.get("sellerEmail"),
+    "Seller phone: " + data.get("sellerPhone"),
+    "Country: " + data.get("country"),
+    "Denomination: " + data.get("denomination"),
+    "Year: " + data.get("coinYear"),
+    "Quantity: " + data.get("quantity"),
+    "Condition: " + data.get("condition"),
+    "Asking price: " + data.get("askingPrice"),
+    "Additional details: " + (data.get("description") || "None"),
+    "",
+    "Number of selected photos: " + photos.length,
+    photos.length
+      ? "Please attach the selected coin photos to this email."
+      : "No coin photos selected.",
+    "",
+    "I understand that this enquiry does not guarantee a purchase."
+  ].join("\n");
+
+  const subject = encodeURIComponent("Old Zambian Coins - Seller Enquiry");
+  const body = encodeURIComponent(message);
+
+  result.innerHTML = "";
+
+  const notice = document.createElement("p");
+  notice.textContent =
+    "Your enquiry is ready. Your email app will open next. " +
+    "If you selected photos, attach them to the email before sending.";
+  result.appendChild(notice);
+
+  const emailLink = document.createElement("a");
+  emailLink.href =
+    "mailto:james62@idf.ovh?subject=" + subject + "&body=" + body;
+  emailLink.className = "button";
+  emailLink.textContent = "Open Email to Send Enquiry";
+  result.appendChild(emailLink);
+
+  const whatsappLink = document.createElement("a");
+  whatsappLink.href =
+    "https://wa.me/254727686679?text=" +
+    encodeURIComponent(
+      "Hello, I would like to submit old Zambian coins for review. " +
+      "My name is " + data.get("sellerName") +
+      ". Coin denomination: " + data.get("denomination") +
+      ". Year: " + data.get("coinYear") +
+      ". Quantity: " + data.get("quantity") +
+      ". Condition: " + data.get("condition") +
+      ". Asking price: " + data.get("askingPrice") +
+      ". Please let me know how to send the coin photographs."
+    );
+  whatsappLink.className = "button";
+  whatsappLink.style.marginLeft = "8px";
+  whatsappLink.style.marginTop = "10px";
+  whatsappLink.target = "_blank";
+  whatsappLink.rel = "noopener";
+  whatsappLink.textContent = "Continue on WhatsApp";
+  result.appendChild(whatsappLink);
+
+  result.scrollIntoView({ behavior: "smooth", block: "center" });
+});
+</script>
+
+</body>
+  </html>
